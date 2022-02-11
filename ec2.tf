@@ -1,5 +1,26 @@
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+
+  filter {
+    name = "name"
+
+    values = [
+      "amzn-ami-hvm-*-x86_64-gp2",
+    ]
+  }
+
+  filter {
+    name = "owner-alias"
+
+    values = [
+      "amazon",
+    ]
+  }
+}
+
+
 resource "aws_instance" "app_server" {
-  ami           = "ami-0cd73cc497a2d6e69"
+  ami           = "${data.aws_ami.amazon_linux.id}"
   provider = aws.account1
   instance_type = "t2.micro"
   subnet_id = aws_subnet.private_subnet.id
