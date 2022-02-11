@@ -41,7 +41,7 @@ variable "bucket_name" {
 }
 
 variable "s3_backend_bucket_name" {
-    default = "test-s3-state"
+    default = "s3-state-test"
 }
 
 
