@@ -1,5 +1,9 @@
 provider "aws" {
   region                  = var.aws_region
+}
+
+provider "aws" {
+  region                  = var.aws_region
   profile                 = var.aws_cli_profile1
   alias                   = "account1"
 }
