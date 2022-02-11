@@ -1,26 +1,16 @@
-data "aws_ami" "amazon_linux" {
+data "aws_ami" "amazon-2" {
   most_recent = true
 
   filter {
     name = "name"
-
-    values = [
-      "amzn-ami-hvm-*-x86_64-gp2",
-    ]
+    values = ["amzn2-ami-hvm-*-x86_64-ebs"]
   }
-
-  filter {
-    name = "owner-alias"
-
-    values = [
-      "amazon",
-    ]
-  }
+  owners = ["amazon"]
 }
 
 
 resource "aws_instance" "app_server" {
-  ami           = "${data.aws_ami.amazon_linux.id}"
+  ami = data.aws_ami.amazon-2.id
   provider = aws.account1
   instance_type = "t2.micro"
   subnet_id = aws_subnet.private_subnet.id
