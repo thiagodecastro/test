@@ -41,7 +41,7 @@ variable "bucket_name" {
 }
 
 variable "s3_backend_bucket_name" {
-    default = "s3-state-assess-test"
+    default = "s3-state-assessment-test"
 }
 
 
